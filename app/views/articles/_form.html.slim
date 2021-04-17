@@ -1,0 +1,15 @@
+= form_with model: article do |form|
+    div.mb-3
+        = form.label :title, class: 'form-label'
+        = form.text_field :title, class: 'form-control'
+    - article.errors.full_messages_for(:title).each do |message|
+        div.alert.alert-danger
+            = message
+    div.mb-3
+        = form.label :body, class: 'form-label'
+        = form.text_area :body, class: 'form-control'
+    - article.errors.full_messages_for(:body).each do |message|
+        div.alert.alert-danger
+            = message
+    div
+        = form.submit 'Submit', class: 'btn btn-primary'
