@@ -4,5 +4,12 @@ h1
 p
   = @article.body
 
-= link_to "Edit", edit_article_path(@article), class: 'btn btn-primary col-2 me-2'
-= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger col-2'
+.mb-4
+    = link_to "Edit", edit_article_path(@article), class: 'btn btn-primary col-2 me-2'
+    = link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger col-2'
+
+h2 Comments
+= render @article.comments
+
+h2 Add a comment:
+= render 'comments/form'

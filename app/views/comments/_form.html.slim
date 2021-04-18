@@ -1,0 +1,9 @@
+= form_with model: [ @article, @article.comments.build ] do |form|
+    div.mb-3.col-sm-6
+        = form.label :commenter, class: 'form-label'
+        = form.text_field :commenter, class: 'form-control'
+    div.mb-3.col-sm-6
+        = form.label :body, class: 'form-label'
+        = form.text_area :body, class: 'form-control textarea-heigth', rows:"10"
+    div
+        = form.submit 'Submit', class: 'btn btn-primary'
