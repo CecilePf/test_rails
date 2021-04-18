@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title
+      | CrudProject
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .container
+      .row
+        - if user_signed_in?
+          .name
+            p = current_user.name
+          .col-sm-2
+            = link_to('Logout', destroy_user_session_path, method: :delete)
+        - else
+          .col-sm-2
+            = link_to('Login', new_user_session_path)
+        .flash = flash[:error]
+        .flash = flash[:notice]
+        = yield

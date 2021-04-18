@@ -7,9 +7,10 @@ p
 p
     = comment.body
 
-p
-    = link_to 'Delete Comment', [comment.article, comment],
-            method: :delete,
-            data: { confirm: "Are you sure?" },
-            class: 'btn btn-danger col-2'
+- if user_signed_in?
+    p
+        = link_to 'Delete Comment', [comment.article, comment],
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: 'btn btn-danger col-2'
 hr
