@@ -1,3 +1,5 @@
+- if flash[:notice_article]
+    .col-sm-4.alert.alert-success= flash[:notice]
 = form_with model: article do |form|
     div.mb-3.col-sm-6
         = form.label :title, class: 'form-label'
@@ -7,9 +9,9 @@
             = message
     div.mb-3.col-sm-6
         = form.label :body, class: 'form-label'
-        = form.text_area :body, class: 'form-control'
+        = form.text_area :body, class: 'form-control', rows:'10'
     - article.errors.full_messages_for(:body).each do |message|
-        div.alert.alert-danger
+        .col-sm-4.alert.alert-danger
             = message
     div
         = form.submit 'Submit', class: 'btn btn-primary'

@@ -1,9 +1,12 @@
-= form_with model: [ @article, @article.comments.build ] do |form|
+- if flash[:error_comment]
+    - flash[:error_comment].each do |msg|
+        .col-sm-4.alert.alert-danger= msg
+
+- if flash[:notice_comment]
+    .col-sm-4.alert.alert-success= flash[:notice_comment]
+
+= form_with model: [ @article, @comment ] do |form|
     div.mb-3.col-sm-6
-        = form.label :commenter, class: 'form-label'
-        = form.text_field :commenter, class: 'form-control'
-    div.mb-3.col-sm-6
-        = form.label :body, class: 'form-label'
-        = form.text_area :body, class: 'form-control textarea-heigth', rows:"10"
+        = form.text_area :body, class: 'form-control textarea-heigth', rows:'10'
     div
         = form.submit 'Submit', class: 'btn btn-primary'

@@ -1,0 +1,15 @@
+= link_to 'Back to articles', :root
+
+h1 Utilisateurs à vérifier
+
+- @users.each do |user|
+    = form_with model: user, url: manage_user_path(user) do |f|
+      .row.mb-3
+        .col-sm-3
+          = user.name
+        .col-sm-3
+          = f.collection_select(:role_id, Role.all, :id, :name, include_blank: false, label: false, class: "test")
+        .col-sm-3
+          = f.submit 'Valider', class:'btn btn-primary'
+        .col-sm-3
+          = link_to 'Supprimer', manage_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger'

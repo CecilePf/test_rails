@@ -1,5 +1,5 @@
 p
-    strong = comment.commenter
+    strong = comment.user.name
     small
         em = " created at "
         em = comment.created_at
@@ -7,7 +7,7 @@ p
 p
     = comment.body
 
-- if user_signed_in?
+- if comment.user.name === current_user.name
     p
         = link_to 'Delete Comment', [comment.article, comment],
                 method: :delete,

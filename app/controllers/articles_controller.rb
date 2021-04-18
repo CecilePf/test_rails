@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   end
   
   def show
+    @comment = Comment.new
     @article = Article.find(params[:id])
   end
   
@@ -18,7 +19,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     
     if @article.save
-      redirect_to @article
+      redirect_to @article, flash: { notice_article: "Article added" }
     else
       render :new
     end
